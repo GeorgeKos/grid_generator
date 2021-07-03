@@ -1,0 +1,36 @@
+body {
+    background-color: whitesmoke;
+  }
+  
+  #tableContainer {
+    display: table;
+    padding: 1px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  td {
+    border: 2px solid;
+    width: 50px;
+    height: 50px;
+    padding: 1px;
+    background-color: skyblue;
+    display: table-cell;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  td:hover {
+    display: block;
+    width: 100%;
+    background-color: grey;
+  }
+  
+  .clicked {
+    background-color: green;
+  }
+
+  .connection-clicked {
+    border-width: 2px;
+    border-color: red;
+  }

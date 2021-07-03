@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="create_grid.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="FileSaver.min.js"></script>
+    <script src="jszip.min.js"></script>
+</head>
+
+<body>
+    Rows: <input type="number" name="Rows" id="Rows"><br>
+    Columns: <input type="number" name="Columns" id="Columns"><br>
+    Area Name: <input type="text" name="Name" id="Name"><br>
+    <button onclick="generateGrid(document.getElementById('Rows').value, document.getElementById('Columns').value)">
+        Click for Grid </button>
+
+    <div id="radio_selection">
+        <input type="radio" id="terrain_selection" name="draw_selection">
+        <label for="terrain_selection"> Select to place terrain </label><br>
+        <input type="radio" id="npc_selection" name="draw_selection">
+        <label for="npc_selection"> Select to place npc </label><br>
+        <input type="radio" id="connection_selection" name="draw_selection">
+        <label for="connection_selection"> Select to place connection </label><br>
+    </div>
+
+    <div id="tableContainer"></div>
+    <button onclick="makeCsv()">
+        Export to csv </button>
+    <script src="create_grid.js"></script>
+</body>
+
+</html>
