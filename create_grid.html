@@ -13,7 +13,8 @@
     Rows: <input type="number" name="Rows" id="Rows"><br>
     Columns: <input type="number" name="Columns" id="Columns"><br>
     Area Name: <input type="text" name="Name" id="Name"><br>
-    <button onclick="generateGrid(document.getElementById('Rows').value, document.getElementById('Columns').value)">
+    <button
+        onclick="generateGrid('tableContainer','grid',document.getElementById('Rows').value, document.getElementById('Columns').value)">
         Click for Grid </button>
 
     <div id="radio_selection">

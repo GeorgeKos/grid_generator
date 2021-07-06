@@ -1,7 +1,4 @@
 
-
-
-
 $(document).ready(function () {
     $('#radio_selection').change(function () {
         selected_ = $("input[name='draw_selection']:checked").attr('id');
@@ -21,8 +18,8 @@ $(document).ready(function () {
     });
 });
 
-function generateGrid(rows, cols) {
-    var grid = "<table id=\"grid\">";
+function generateGrid(container_id, table_id, rows, cols) {
+    var grid = "<table id=\"" + table_id + "\">";
     for (row = 1; row <= rows; row++) {
         grid += "<tr>";
         for (col = 1; col <= cols; col++) {
@@ -31,17 +28,17 @@ function generateGrid(rows, cols) {
         }
         grid += "</tr>";
     }
-    $("#tableContainer").empty();
-    $("#tableContainer").append(grid);
+    $('#' + container_id).empty();
+    $('#' + container_id).append(grid);
     return grid;
 }
 
 function changeColor() {
     const $this = $(this);
-    if ($this.hasClass("clicked")) {
-        $this.removeClass("clicked");
+    if ($this.hasClass("terrain-clicked")) {
+        $this.removeClass("terrain-clicked");
     } else {
-        $this.addClass("clicked");
+        $this.addClass("terrain-clicked");
     }
 }
 
@@ -75,9 +72,9 @@ function makeCsv() {
 
     let folder = zip.folder(name);
 
-    let terrain_array = createArrayFromTable("clicked");
-    let npc_array = createArrayFromTable("npc-place-clicked");
-    let connection_array = createArrayFromTable("connection-clicked");
+    let terrain_array = createArrayFromTable("#grid", "terrain-clicked");
+    let npc_array = createArrayFromTable("#grid", "npc-place-clicked");
+    let connection_array = createArrayFromTable("#grid", "connection-clicked");
 
     let terrain_csv = exportCsv(terrain_array);
     let npc_csv = exportCsv(npc_array);
@@ -93,10 +90,10 @@ function makeCsv() {
         });
 }
 
-function createArrayFromTable(class_filter) {
+function createArrayFromTable(table_selector, class_filter) {
     let tableArray = [];
 
-    $("table#grid tr").each(function () {
+    $("table" + table_selector + " tr").each(function () {
         let arrayOfThisRow = [];
         let tableData = $(this).find('td');
         if (tableData.length > 0) {
